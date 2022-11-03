@@ -10,11 +10,6 @@ pipeline {
                 git branch: 'main', credentialsId: 'Github', url: 'https://github.com/ShubbamShrmali/ELK-Stack.git'
             }
         }
-        stage('terraform format check') {
-            steps{
-                sh 'terraform fmt'
-            }
-        }
         stage('terraform init') {
             steps{
                 sh 'terraform init'
