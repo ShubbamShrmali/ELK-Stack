@@ -1,24 +1,30 @@
 pipeline {
-  agent any
-  stages {
-    stage("verify tooling") {
-      steps {
-        sh '''
-          docker version
-          docker info
-          docker-compose --version 
-          curl --version
-        '''
-      }
-  
-    }
-    stage('Start container') {
-      steps {
-         sh 'docker-compose -f docker-compose.yaml up'
-      }
-    }
-        
- 
+    agent any
+    tools {
+  terraform 'terraform'
 }
-  }
+    stages {
+        stage('Git checkout') {
+           steps{
+                git branch: 'main', credentialsId: 'Github', url: 'https://github.com/ShubbamShrmali/Terraform-Project-CS.git'
+            }
+        }
+        stage('terraform format check') {
+            steps{
+                sh 'terraform fmt'
+            }
+        }
+        stage('terraform Init') {
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage('terraform apply') {
+            steps{
+                sh 'terraform apply --auto-approve'
+            }
+        }
+    }
 
+    
+}
