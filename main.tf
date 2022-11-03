@@ -1,20 +1,19 @@
 provider "aws" {
-    region = var.aws_region   
-    profile = var.ec2_profile
+  region  = "us-east-1"
 }
 
 
 
-resource "aws_instance" "jenkins-docker" {
-    ami = var.ec2_ami
-    count = var.ec2_count
-    key_name   = var.key_name
-    instance_type = var.instance_type
-    security_groups = ["${var.ec2_sg}"]
-    subnet_id = element(var.ec2_subnet_id, count.index) #element(list, index)
+
+resource "aws_instance" "JenkinDeploy" {
+    ami = "ami-026b57f3c383c2eec"
+    count = "1"
+    key_name   = "Jenkins"
+    instance_type = "t2.micro"
+    security_groups = ["launch-wizard-1"]
     tags = {
-        Name = "${var.ec2_tags[0]}"
+        Name = "JenkinsServer"
     } 
-    user_data = file("docker-jenkins.sh")
+    user_data = file("jenkinsapp.sh")
 
 }
