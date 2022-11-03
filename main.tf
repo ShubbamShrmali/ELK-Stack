@@ -16,6 +16,6 @@ resource "aws_instance" "jenkins-docker" {
     tags = {
         Name = "${var.ec2_tags[0]}"
     } 
-    user_data = file("docker-jenkins.sh")
+    user_data = file("docker-compose.yaml")
 
 }
