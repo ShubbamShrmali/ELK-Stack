@@ -1,26 +1,24 @@
 pipeline {
     agent any
- tools {
-  terraform 'Terraform'
-}
+    tools {
+      terraform 'terraform9'
+    }
 
     stages {
-        stage('Git checkout') {
-           steps{
-                git branch: 'main', credentialsId: 'Github', url: 'https://github.com/ShubbamShrmali/ELK-Stack.git'
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/edmundtetteh/Docker'
             }
         }
-        stage('terraform init') {
-            steps{
+        stage('Terraform init') {
+            steps {
                 sh 'terraform init'
             }
         }
-        stage('terraform apply') {
-            steps{
+        stage('Terraform Apply') {
+            steps {
                 sh 'terraform apply --auto-approve'
             }
         }
     }
-
-    
 }
