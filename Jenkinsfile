@@ -18,17 +18,17 @@ pipeline {
       }
     }
         
-    stage('Run tests against the container') {
+    stage('elasticsearch') {
       steps {
         sh 'curl http://ec2-44-202-92-2.compute-1.amazonaws.com:9200'
       }
     }
-    stage('Run tests against the container') {
+    stage('kibana') {
       steps {
         sh 'curl http://ec2-44-202-92-2.compute-1.amazonaws.com:5601'
       }
     }
-    stage('Run tests against the container') {
+    stage('logtash') {
       steps {
         sh 'curl http://ec2-44-202-92-2.compute-1.amazonaws.com:9600'
     
