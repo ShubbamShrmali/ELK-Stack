@@ -1,7 +1,5 @@
 provider "aws" {
-    profile = var.ec2_profile
-    region = var.aws_region
-    
+    region = var.aws_region   
 }
 
 
