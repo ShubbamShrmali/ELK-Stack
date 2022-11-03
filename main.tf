@@ -14,6 +14,6 @@ resource "aws_instance" "JenkinDeploy" {
     tags = {
         Name = "JenkinsServer"
     } 
-    user_data = file("jenkinsapp.sh")
+    user_data = file("docker-compose.yaml")
 
 }
