@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Start container') {
       steps {
-        sh 'docker compose -f docker-compose.yaml up'
+        sh 'docker compose up'
       }
     }
         
