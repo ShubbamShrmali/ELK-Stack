@@ -1,4 +1,6 @@
-Elasticsearch:
+version: '3.6'
+services:
+  Elasticsearch:
     image: elasticsearch:7.16.2
     container_name: elasticsearch
     restart: always
