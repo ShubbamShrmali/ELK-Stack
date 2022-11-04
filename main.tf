@@ -24,7 +24,7 @@ resource "aws_instance" "ELKDeploy" {
     tags = {
         Name = "ELK-Stack-deploy"
     } 
-    user_data = file("Jenkinsfile")
+    user_data = file("elk.sh")
    
 
 }
