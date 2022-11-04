@@ -19,7 +19,7 @@ resource "aws_instance" "JenkinDeploy" {
     ami = "ami-026b57f3c383c2eec"
     count = "1"
     key_name   = "Jenkins"
-    instance_type = "t2.micro"
+    instance_type = "t3.large"
     security_groups = ["launch-wizard-1"]
     tags = {
         Name = "JenkinsServer"
