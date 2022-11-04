@@ -15,14 +15,14 @@
 
 
 
-resource "aws_instance" "JenkinDeploy" {
+resource "aws_instance" "ELKDeploy" {
     ami = "ami-026b57f3c383c2eec"
     count = "1"
     key_name   = "Jenkins"
     instance_type = "t3.large"
     security_groups = ["launch-wizard-1"]
     tags = {
-        Name = "JenkinsServer"
+        Name = "ELK-Stack-deploy"
     } 
     user_data = file("ELK-Stack.sh")
    
