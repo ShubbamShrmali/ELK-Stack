@@ -14,5 +14,5 @@ resource "aws_instance" "ELK" {
     tags = {
         Name = "ELK-Stack"
     } 
-    user_data = file ${"docker-compose.yaml"}
+    user_data = file ${"ELK-STACK.sh"}
 }
